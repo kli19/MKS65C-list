@@ -4,7 +4,7 @@
 
 void print_list(struct node * nod){
   struct node * n = nod;
-  while(n -> next){
+  while(n){
     printf("%p: %d\n", n, n->i);
     n = n->next;
   }
@@ -21,13 +21,13 @@ struct node * insert_front(struct node * nod, int i){
 struct node * free_list(struct node * nod){
   struct node * start = nod;
   struct node * temp; 
-  while(nod -> next){
+  while(nod){
     temp = nod -> next;
-    printf("%p: %d\n", nod, nod->i);
-    //nod -> i = 0;
-    //nod -> next = NULL;
+    //printf("%p: %d\n", nod, nod->i);
+    nod -> i = 0;
+    nod -> next = NULL;
     free(nod);
-    printf("%p: %d\n", nod, nod->i);
+    //printf("%p: %d\n", nod, nod->i);
     nod = temp;
   }
   return start;
